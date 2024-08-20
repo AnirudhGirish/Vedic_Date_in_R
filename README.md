@@ -1,12 +1,15 @@
 # Vedic Calendar in R
 
-This repository contains an R script that calculates the Vedic date and time based on user input. The script determines the `tithi`, `masa`, and other Vedic time-related information based on the given date, time, and geographical location.
+This repository contains an R script that calculates various Vedic date and time elements based on user input. The script determines the `tithi`, `masa`, `nakshatra`, `yoga`, `karana`, and sunrise/sunset times using the Swiss Ephemeris and user-provided date, time, and location.
 
 ## Features
 
 - Calculate Vedic tithi (lunar day)
 - Determine Masa (lunar month)
+- Identify Nakshatra (constellation)
+- Calculate Yoga and Karana
 - Provide sidereal time based on location
+- Calculate sunrise and sunset times
 
 ## Prerequisites
 
@@ -51,4 +54,15 @@ latitude <- 28.6139  # Delhi latitude
 longitude <- 77.2090 # Delhi longitude
 
 vedic_info <- vedic_date_time(date_time, latitude, longitude)
-print(vedic_info)
+
+# Print Vedic information
+cat("Vedic Date and Time Information:\n")
+cat("Tithi:", vedic_info$Tithi, "\n")
+cat("Masa:", vedic_info$Masa, "\n")
+cat("Nakshatra:", vedic_info$Nakshatra, "\n")
+cat("Yoga:", vedic_info$Yoga, "\n")
+cat("Karana:", vedic_info$Karana, "\n")
+cat("Sidereal Time:", vedic_info$SiderealTime, "hours\n")
+cat("Sunrise:", julian_to_datetime(vedic_info$Sunrise), "\n")
+cat("Sunset:", julian_to_datetime(vedic_info$Sunset), "\n")
+cat("Julian Day:", vedic_info$JulianDay, "\n")
